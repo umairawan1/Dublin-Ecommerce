@@ -17,7 +17,7 @@ export const fetchAllFilterdProducts = createAsyncThunk('/products/fetchAllProdu
         })
         console.log(query, "this query");
         const queryString = query.toString() ? `?${query}` : "";
-        const result = await axios.get(`https://e-commerce-backend-qxdj.onrender.com/api/shop/products/get${queryString}`);
+        const result = await axios.get(`http://localhost:5000/api/shop/products/get${queryString}`);
         return result?.data;
     });
 
@@ -25,7 +25,7 @@ export const fetchproductDetails = createAsyncThunk('/products/fetchproductDetai
     async (id) => {
 
 
-        const result = await axios.get(`https://e-commerce-backend-qxdj.onrender.com/api/shop/products/get/${id}`);
+        const result = await axios.get(`http://localhost:5000/api/shop/products/get/${id}`);
 
         return result?.data;
     });

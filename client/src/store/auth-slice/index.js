@@ -15,7 +15,7 @@ export const registerUser = createAsyncThunk(
     async (formData, { rejectWithValue }) => {
         try {
             const response = await axios.post(
-                'https://e-commerce-backend-qxdj.onrender.com/api/auth/register',
+                'http://localhost:5000/api/auth/register',
                 formData,
                 {
                     withCredentials: true,
@@ -38,7 +38,7 @@ export const loginUser = createAsyncThunk(
   
     async (formData) => {
       const response = await axios.post(
-        "https://e-commerce-backend-qxdj.onrender.com/api/auth/login",
+        "http://localhost:5000/api/auth/login",
         formData,
         {
           withCredentials: true,
@@ -55,7 +55,7 @@ export const logoutUser = createAsyncThunk(
     '/auth/logout',
     async () => {
         const response = await axios.post(
-            'https://e-commerce-backend-qxdj.onrender.com/api/auth/logout',{},
+            'http://localhost:5000/api/auth/logout',{},
             {
                 withCredentials: true,
             }
@@ -70,7 +70,7 @@ export const checkAuth = createAsyncThunk(
     async () => {
 
         const response = await axios.get(
-            'https://e-commerce-backend-qxdj.onrender.com/api/auth/check-auth',
+            'http://localhost:5000/api/auth/check-auth',
             {
                 withCredentials: true,
                 headers: {

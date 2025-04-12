@@ -13,7 +13,7 @@ export const addNewAddress = createAsyncThunk(
         console.log(formData,"backend");
         
       const response = await axios.post(
-        "https://e-commerce-backend-qxdj.onrender.com/api/shop/address/add",
+        "http://localhost:5000/api/shop/address/add",
         formData
       );
   
@@ -23,13 +23,13 @@ export const addNewAddress = createAsyncThunk(
 
 export const fetchAllAddresses = createAsyncThunk('/addresses/fetchAllAddresses',
     async (userId) => {
-        const response = await axios.get(`https://e-commerce-backend-qxdj.onrender.com/api/shop/address/get/${userId}`);
+        const response = await axios.get(`http://localhost:5000/api/shop/address/get/${userId}`);
 
         return response.data
     })
 
 export const editaAddress = createAsyncThunk('/addresses/editaAddress', async ({ userId, addressId, formdata }) => {
-    const response = await axios.put(`https://e-commerce-backend-qxdj.onrender.com/api/shop/address/update/${userId}/${addressId}`, formdata
+    const response = await axios.put(`http://localhost:5000/api/shop/address/update/${userId}/${addressId}`, formdata
 
     );
 
@@ -37,7 +37,7 @@ export const editaAddress = createAsyncThunk('/addresses/editaAddress', async ({
 })
 
 export const deleteAddress = createAsyncThunk('/addresses/deleteAddress', async ({ userId, addressId }) => {
-    const response = await axios.delete(`https://e-commerce-backend-qxdj.onrender.com/api/shop/address/delete/${userId}/${addressId}`);
+    const response = await axios.delete(`http://localhost:5000/api/shop/address/delete/${userId}/${addressId}`);
 
     return response.data
 })

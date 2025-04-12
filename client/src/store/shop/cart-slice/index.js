@@ -9,7 +9,7 @@ const initialState = {
 
 export const addTocart = createAsyncThunk('cart/addTocart', async ({ userId, productId, quantity }, { rejectWithValue }) => {
     try {
-        const response = await axios.post('https://e-commerce-backend-qxdj.onrender.com/api/shop/cart/add',
+        const response = await axios.post('http://localhost:5000/api/shop/cart/add',
             {
                 userId,
                 productId,
@@ -33,7 +33,7 @@ export const addTocart = createAsyncThunk('cart/addTocart', async ({ userId, pro
 
 //       try {
 //         const response = await axios.get(
-//           `https://e-commerce-backend-qxdj.onrender.com/api/shop/cart/get/${userId}`
+//           `http://localhost:5000/api/shop/cart/get/${userId}`
 //         );
 //         return response.data;
 //       } catch (error) {
@@ -52,7 +52,7 @@ export const fetchCartItems = createAsyncThunk(
             }
 
             const response = await axios.get(
-                `https://e-commerce-backend-qxdj.onrender.com/api/shop/cart/get/${userId}`,
+                `http://localhost:5000/api/shop/cart/get/${userId}`,
                 {
                     withCredentials: true
                 }
@@ -74,7 +74,7 @@ export const deleteCartItem = createAsyncThunk(
             const token = localStorage.getItem('token'); // or however you store your token
             
             const response = await axios.delete(
-                `https://e-commerce-backend-qxdj.onrender.com/api/shop/cart/${userId}/${productId}`,
+                `http://localhost:5000/api/shop/cart/${userId}/${productId}`,
                 {
                     headers: {
                         'Authorization': `Bearer ${token}` // Add the authorization header
@@ -91,7 +91,7 @@ export const deleteCartItem = createAsyncThunk(
 
 export const updateCartQuantity = createAsyncThunk('cart/updateCartQuantity', async ({ userId, productId, quantity }, { rejectWithValue }) => {
     try {
-        const response = await axios.put('https://e-commerce-backend-qxdj.onrender.com/api/shop/cart/update-cart',
+        const response = await axios.put('http://localhost:5000/api/shop/cart/update-cart',
             {
                 userId,
                 productId,

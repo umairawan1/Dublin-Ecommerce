@@ -3,12 +3,12 @@ const {registerUser,loginUser,logoutUser,authMiddleware} =require('../../control
 
 const router = express.Router();
 
-//eject APIs methods get , post ,put , delete
 
-router.post('/register',registerUser);//this route call registerUser controller
+
+router.post('/register',registerUser);
 router.post('/login',loginUser);
 router.post('/logout',logoutUser);
-router.get('/check-auth',authMiddleware,(req,res)=>{
+router.get('/check-auth',(req,res)=>{
     const user = req.user;
     res.status(200).json({
         success : true,

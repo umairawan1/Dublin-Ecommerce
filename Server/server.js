@@ -21,24 +21,15 @@ mongoose.connect(DB_URI)
   .catch(err => console.log(err));
 
 
-
-
-app.use(
+//http://localhost:1573/auth/login
+  app.use(
     cors({
-        origin: 'http://localhost:1573',
-        // origin: '*',
-        methods: ['GET', 'POST', 'DELETE', 'PUT'],
-        allowedHeaders: [
-            "Content-Type",
-            'Authorization',
-            'Cache-Control',
-            'Expires',
-            'Pragma'
-            
-        ],
-        credentials: true
+      origin: 'http://localhost:1573', // frontend origin
+      credentials: true, // allow cookies / credentials
+      methods: ['GET', 'POST', 'DELETE', 'PUT'],
     })
-)
+  );
+  
 
 app.use(cookieParser());
 app.use(express.json());

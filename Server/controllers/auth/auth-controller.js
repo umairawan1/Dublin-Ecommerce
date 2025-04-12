@@ -98,10 +98,6 @@ const logoutUser = (req, res) => {
     })
 }
 
-
-
-//auth middleware
-//check auth status
 const authMiddleware = async (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
