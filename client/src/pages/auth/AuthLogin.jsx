@@ -23,8 +23,7 @@ export default function AuthLogin() {
                 if (data?.payload?.success) {
                     toast({
                         title: data?.payload?.message,
-                    })
-                    // Navigate based on user role
+                    })                   
                     if (data?.payload?.user?.role === 'admin') {
                         navigate('/admin/dashboard')
                     } else {

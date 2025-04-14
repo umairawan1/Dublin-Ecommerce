@@ -1,30 +1,19 @@
-const Product = require("./Product");
+const { DataTypes } = require('sequelize');
+const sequelize = require('../db');
+const User = require('./User'); // Make sure you have this model defined
 
-const mongoose = new require('mongoose');
+const Cart = sequelize.define('Cart', {
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  }
+}, {
+  timestamps: true
+});
 
-const CartSchema = new mongoose.Schema({
-    userId : {
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'User',
-        required : true
-    },
-    items : [
-        {
-            productId : {
-                type : mongoose.Schema.Types.ObjectId,
-                ref : 'Product' ,
-                required : true,
-            },
-            quantity :{
-                type : Number,
-                required : true,
-                min : 1
-            }
-        }
-    ]
-},{
-   timestamps : true,  
-})
+Cart.associate = (models) => {
+  Cart.belongsTo(models.User, { foreignKey: 'userId' });
+  Cart.hasMany(models.CartItem, { foreignKey: 'cartId' });
+};
 
-
-module.exports = mongoose.model('Cart',CartSchema)
+module.exports = Cart;

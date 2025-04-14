@@ -1,12 +1,32 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../db')
 
-const AddressSchema = new mongoose.Schema({
-    userId : String,
-    address : String,
-    city : String,
-    pincode : String,
-    phone : String,
-    notes : String
-},{timestamps : true})
+const Address = sequelize.define('Address', {
+    userId: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    address: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    city: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    pincode: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    phone: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    notes: {
+        type: DataTypes.STRING
+    }
+}, {
+    timestamps: true
+});
 
-module.exports = mongoose.model('Address' , AddressSchema)
+module.exports = Address;
